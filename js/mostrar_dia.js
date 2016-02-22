@@ -1,5 +1,6 @@
 function mostrar_dia()
 {
+loading();
 var iDiv = document.createElement('div');
 
 var fecha = document.getElementById("fecha").value;
@@ -37,9 +38,14 @@ xmlhttp.onreadystatechange=function()
 		//alert(4);
     }
   }
-	//alert('Fecha '+fecha+' Turno ='+tipo);
-	xmlhttp.open("POST","http://localhost/wgts/celular_controlar_fecha.php",false);
+	//alert('http://www.wgts.com.ar/service/celular_controlar_fecha.php   true Fecha '+fecha+' Turno ='+tipo+" tipo_vehiculo="+tipo_vehiculo);
+	xmlhttp.open("POST","http://www.wgts.com.ar/service/celular_controlar_fecha.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("fecha="+fecha+"&tipo="+tipo+"&tipo_vehiculo="+tipo_vehiculo);
 
 }
+
+function loading()
+{
+	document.getElementById("mostrar_turnos").innerHTML='<table width="100%"><tr><td align="center"><img src="img/loader.gif"></td></tr></table>';
+	}
